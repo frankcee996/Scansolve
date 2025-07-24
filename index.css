@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+
+  /* App specific colors */
+  --app-primary: hsl(207, 90%, 54%);
+  --app-primary-dark: hsl(211, 90%, 48%);
+  --app-secondary: hsl(48, 100%, 67%);
+  --app-success: hsl(122, 39%, 49%);
+  --app-error: hsl(4, 90%, 58%);
+  --app-surface: hsl(0, 0%, 100%);
+  --app-background: hsl(0, 0%, 96%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-app-background text-foreground;
+  }
+}
+
+@layer components {
+  .ripple-effect {
+    @apply relative overflow-hidden;
+  }
+
+  .scan-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--app-primary), transparent);
+    animation: scan-line 2s ease-in-out infinite;
+  }
+
+  .camera-overlay {
+    background: linear-gradient(45deg, transparent 49%, rgba(25, 118, 210, 0.3) 50%, transparent 51%);
+    background-size: 20px 20px;
+  }
+}
+
+@layer utilities {
+  .text-app-primary {
+    color: var(--app-primary);
+  }
+  
+  .bg-app-primary {
+    background-color: var(--app-primary);
+  }
+  
+  .bg-app-primary-dark {
+    background-color: var(--app-primary-dark);
+  }
+  
+  .text-app-secondary {
+    color: var(--app-secondary);
+  }
+  
+  .bg-app-secondary {
+    background-color: var(--app-secondary);
+  }
+  
+  .text-app-success {
+    color: var(--app-success);
+  }
+  
+  .bg-app-success {
+    background-color: var(--app-success);
+  }
+  
+  .text-app-error {
+    color: var(--app-error);
+  }
+  
+  .bg-app-error {
+    background-color: var(--app-error);
+  }
+  
+  .bg-app-surface {
+    background-color: var(--app-surface);
+  }
+  
+  .bg-app-background {
+    background-color: var(--app-background);
+  }
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(400px); }
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
